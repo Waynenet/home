@@ -54,4 +54,4 @@ var id = "7452421335"; //封面 ID / 单曲 ID / 歌单 ID
 * [天气 API](https://www.tianqiapi.com/)
 * [Hitokoto 一言](https://hitokoto.cn/)
 
-<a title="SSL" target="_blank" href="https://myssl.com/seal/detail?domain=blog.imsyy.top"><img src="https://img.shields.io/badge/MySSL-安全认证-brightgreen"></a>&nbsp;<a title="CDN" target="_blank" href="https://cdnjs.com/"><img src="https://img.shields.io/badge/CDN-Cloudflare-blue"></a>&nbsp;<a title="Copyright" target="_blank" href="https://imsyy.top/"><img src="https://img.shields.io/badge/Copyright%20%C2%A9%202020--2022-%E7%84%A1%E5%90%8D-red"></a>
+<a title="CDN" target="_blank" href="https://cdnjs.com/"><img src="https://img.shields.io/badge/CDN-Cloudflare-blue"></a>&nbsp;<a title="Copyright" target="_blank" href="https://soga.ml/"><img src="https://img.shields.io/badge/Copyright%20%C2%A9%202022--2022-Wayne-red"></a>
