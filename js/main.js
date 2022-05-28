@@ -190,11 +190,6 @@ $("#github").mouseover(function () {
 }).mouseout(function () {
     $("#link-text").html("通过这里联系我");
 });
-$("#qq").mouseover(function () {
-    $("#link-text").html("有什么事吗");
-}).mouseout(function () {
-    $("#link-text").html("通过这里联系我");
-});
 $("#email").mouseover(function () {
     $("#link-text").html("来封 Email");
 }).mouseout(function () {
@@ -206,6 +201,11 @@ $("#telegram").mouseover(function () {
     $("#link-text").html("通过这里联系我");
 });
 $("#twitter").mouseover(function () {
+    $("#link-text").html("你懂的 ~");
+}).mouseout(function () {
+    $("#link-text").html("通过这里联系我");
+});
+$("#youtube").mouseover(function () {
     $("#link-text").html("你懂的 ~");
 }).mouseout(function () {
     $("#link-text").html("通过这里联系我");
