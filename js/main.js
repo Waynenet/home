@@ -205,8 +205,8 @@ $("#twitter").mouseover(function () {
 }).mouseout(function () {
     $("#link-text").html("通过这里联系我");
 });
-$("#youtube").mouseover(function () {
-    $("#link-text").html("你懂的 ~");
+$("#phone").mouseover(function () {
+    $("#link-text").html("不一定在线哦");
 }).mouseout(function () {
     $("#link-text").html("通过这里联系我");
 });
