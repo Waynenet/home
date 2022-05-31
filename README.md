@@ -6,7 +6,7 @@
 
 ![無名の主页](https://img.imsyy.top/other/imsyy-home.webp)
 
-
+>主页的 Logo 字体已经过压缩，若用本站 Logo 以外的字母会变回默认字体，这里是 [完整字体](https://file.imsyy.top/font/Pacifico-Regular.ttf)
 >天气 API 每日限量100次，需 [自行申请](https://www.tianqiapi.com/)，或更换其他 API
 
 ### Demo
