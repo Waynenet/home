@@ -8,11 +8,11 @@
     src: url('../font/UnidreamLED.ttf') format('truetype');
 }
 
-@font-face {
+/*@font-face {
     font-family: "MiSans";
     src: url('../font/MiSans-Regular.woff') format('woff');
     font-display: sans-serif;
-}
+}*/
 /* 
 @font-face {
     font-family: "iconfont";
