@@ -151,16 +151,16 @@ main {
 .img-title {
     width: 100%;
     margin-left: 12px;
-    transform: translateY(-8%);
+    transform: translateY(8%);
 }
 
 span.img-title {
-    font-size: 5rem;
+    font-size: 3rem;
     font-family: 'Facon-2' !important;
 }
 
 span.img-text {
-    font-size: 2rem;
+    font-size: 1rem;
     font-family: 'Facon-2' !important;
 }
 

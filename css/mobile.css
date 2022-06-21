@@ -64,11 +64,11 @@
     }
 
     span.img-title {
-        font-size: 4.75rem;
+        font-size: 3rem;
     }
 
     span.img-text {
-        font-size: 1.75rem;
+        font-size: 1rem;
     }
 
     /*链接卡片文字*/
@@ -336,7 +336,7 @@
 
 /*第二屏logo*/
 .logo-text {
-    font-family: 'Pacifico-Regular' !important;
+    font-family: 'Facon-2' !important;
 }
 
 /*切换动画*/
