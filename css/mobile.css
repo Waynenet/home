@@ -252,8 +252,8 @@
 
 }
 
-/*小于390px时*/
-@media (max-width: 390px) {
+/*小于402px时*/
+@media (max-width: 402px) {
     .main-img img {
         display: none;
     }
