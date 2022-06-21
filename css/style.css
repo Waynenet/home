@@ -934,6 +934,12 @@ footer {
     -ms-animation: fade 0.75s;
 }
 
+.lrc-show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /*弹窗样式*/
 .iziToast {
     backdrop-filter: blur(10px) !important;

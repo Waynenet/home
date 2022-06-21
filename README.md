@@ -6,7 +6,6 @@
 
 ![無名の主页](https://img.imsyy.top/other/imsyy-home.webp)
 
->主页的 Logo 字体已经过压缩，若用本站 Logo 以外的字母会变回默认字体，这里是 [完整字体](https://file.imsyy.top/font/Pacifico-Regular.ttf)
 >天气 API 每日限量100次，需 [自行申请](https://www.tianqiapi.com/)，或更换其他 API
 
 ### Demo
@@ -34,9 +33,9 @@
 更改 `music.js` 的参数即可实现自定义歌单列表
 
 ```js
-var server = "netease"; //netease: 网易云音乐; tencent: QQ音乐; kugou: 酷狗音乐; xiami: 虾米; kuwo: 酷我
+var server = "tencent"; //netease: 网易云音乐; tencent: QQ音乐; kugou: 酷狗音乐; xiami: 虾米; kuwo: 酷我
 var type = "playlist"; //song: 单曲; playlist: 歌单; album: 唱片
-var id = "7452421335"; //封面 ID / 单曲 ID / 歌单 ID
+var id = "7476871946"; //封面 ID / 单曲 ID / 歌单 ID
 ```
 
 ### 插件
@@ -54,4 +53,4 @@ var id = "7452421335"; //封面 ID / 单曲 ID / 歌单 ID
 * [天气 API](https://www.tianqiapi.com/)
 * [Hitokoto 一言](https://hitokoto.cn/)
 
-<a title="CDN" target="_blank" href="https://cdnjs.com/"><img src="https://img.shields.io/badge/CDN-Cloudflare-blue"></a>&nbsp;<a title="Copyright" target="_blank" href="https://soga.ml/"><img src="https://img.shields.io/badge/Copyright%20%C2%A9%202022--2022-Wayne-red"></a>
+<a title="Copyright" target="_blank" href="https://soga.ml/"><img src="https://img.shields.io/badge/Copyright%20%C2%A9%202022--2022-Wayne-red"></a>
