@@ -72,7 +72,7 @@ $.ajax({
         }, function () {
             $('.music-text').css("display", "block");
             $('.music-volume').css("display", "none");
-        })
+        });
 
         /* 一言与音乐切换 */
         $('#open-music').on('click', function () {
@@ -84,7 +84,7 @@ $.ajax({
             $('#open-music').css("display", "flex");
         }, function () {
             $('#open-music').css("display", "none");
-        })
+        });
 
         $('#music-close').on('click', function () {
             $('#music').css("display", "none");
@@ -117,7 +117,7 @@ $.ajax({
         });
 
         //音量调节
-        $("#volume").on('click', function () {
+        $("#volume").on('click touchend', function () {
             var x = $("#volume").val();
             ap.volume(x, true);
             if (x == 0) {
