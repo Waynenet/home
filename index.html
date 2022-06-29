@@ -10,6 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="force-rendering" content="webkit" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0d0d0d"/>
     <meta name="description" content="WayneのHome">
     <meta name="keywords" content="Wayne,个人主页">
     <meta name="author" content="Wayne">
@@ -51,6 +52,8 @@
         if ( /*@cc_on!@*/ false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href =
             "/upgrade-your-browser/index.html?referrer=" + encodeURIComponent(window.location.href);
     </script>
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json">
     <!-- 百度统计 -->
     <script>
         var _hmt = _hmt || [];
@@ -467,6 +470,14 @@
             <div id="lrc"></div>
         </footer>
     </section>
+    <!-- sw.js -->
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", function () {
+                navigator.serviceWorker.register("sw.js");
+            });
+        }
+    </script>
     <!-- noscript -->
     <noscript>
         <div class="noscript fixed-top">请开启 JavaScript</div>
