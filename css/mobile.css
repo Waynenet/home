@@ -126,6 +126,11 @@
 /*小于720px时*/
 @media (max-width: 720px) {
 
+    /* 鼠标样式 */
+    #g-pointer-2 {
+        display: none;
+    }
+
     /*左侧栏高度*/
     .main-left {
         transform: translateY(20px);
