@@ -206,6 +206,11 @@ span.img-text {
     font-family: 'Facon-2' !important;
 }
 
+span.img-github {
+    font-size: 1rem;
+    font-family: 'UnidreamLED' !important;
+}
+
 /* 简介 */
 .message {
     background: rgb(0 0 0 / 25%);
