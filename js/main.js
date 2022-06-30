@@ -349,3 +349,8 @@ for (var day of days) {
     }
 }
 
+//鼠标样式
+switch (true) {
+    case navigator.userAgent.indexOf('Mobile') > 0:
+    $('#g-pointer-2').css("display", "none");
+}
