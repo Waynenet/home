@@ -146,8 +146,7 @@ $('#hitokoto').click(function () {
 //获取天气
 //每日限量 100 次
 //请前往 https://www.tianqiapi.com/ 申请(免费)
-api = ${{ secrets.TQAPI }};
-fetch('api')
+fetch('https://www.yiketianqi.com/free/day?appid=87525759&appsecret=PP6T6ikD&unescape=1')
     .then(response => response.json())
     .then(data => {
         $('#wea_text').html(data.wea)
