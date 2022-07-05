@@ -33,6 +33,12 @@ body.addEventListener('mousemove', (e) => {
     });
 });
 
+//移动端除去鼠标样式
+switch (true) {
+    case navigator.userAgent.indexOf('Mobile') > 0:
+    $('#g-pointer-2').css("display", "none");
+}
+
 //加载完成后执行
 window.addEventListener('load', function () {
 
@@ -139,8 +145,8 @@ $('#hitokoto').click(function () {
 
 //获取天气
 //每日限量 100 次
-//请前往 https://www.tianqiapi.com/ 申请（免费）
-fetch('https://www.yiketianqi.com/free/day?appid=43656176&appsecret=I42og6Lm&unescape=1')
+//请前往 https://www.tianqiapi.com/ 申请
+fetch('https://v0.yiketianqi.com/api?unescape=1&version=v91&appid=43656176&appsecret=I42og6Lm')
     .then(response => response.json())
     .then(data => {
         $('#wea_text').html(data.wea)
@@ -347,10 +353,4 @@ for (var day of days) {
             });
         }, false);
     }
-}
-
-//移动端除去鼠标样式
-switch (true) {
-    case navigator.userAgent.indexOf('Mobile') > 0:
-    $('#g-pointer-2').css("display", "none");
 }
