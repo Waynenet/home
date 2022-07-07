@@ -6,7 +6,9 @@
 
 ![無名の主页](https://img.imsyy.top/other/imsyy-home.webp)
 
->天气 API 每日限量100次，需 [自行申请](https://www.tianqiapi.com/)，或更换其他 API
+>主页的 Logo 字体已经过压缩，若用本站 Logo 以外的字母会变回默认字体
+
+>天气 API 需 [自行申请](https://www.tianqiapi.com/)，或更换其他 API
 
 ### Demo
 >由于 CDN 缓存原因，查看最新效果可能需要 `Ctrl` + `F5` 强制刷新浏览器缓存
