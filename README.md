@@ -4,7 +4,7 @@
 
 主页修改自[無名の主页](https://github.com/imsyy/home)
 
-![無名の主页](https://img.imsyy.top/other/imsyy-home.webp)
+![無名の主页](https://s2.loli.net/2022/07/14/K5JigfvDoNewtuS.webp)
 
 >主页的 Logo 字体已经过压缩，若用本站 Logo 以外的字母会变回默认字体
 
