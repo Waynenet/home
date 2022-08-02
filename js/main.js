@@ -65,7 +65,7 @@ setTimeout(function () {
 
 //延迟加载音乐播放器
 function downloadJSAtOnload() {
-    var element = document.createElement("script");
+    let element = document.createElement("script");
     element.src = "./js/music.js";
     document.body.appendChild(element);
 }
@@ -89,25 +89,6 @@ new_element.setAttribute("src","./js/lantern.js");
 document.body.appendChild(new_element);
 */
 
-//火狐浏览器独立样式
-if (isFirefox = navigator.userAgent.indexOf("Firefox") > 0) {
-    var head = document.getElementsByTagName('head')[0];
-    var link = document.createElement('link');
-    link.href = './css/firefox.css';
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    head.appendChild(link);
-    window.addEventListener('load', function () {
-        setTimeout(function () {
-            iziToast.show({
-                timeout: 8000,
-                icon: "fa-solid fa-circle-exclamation",
-                message: '您正在使用火狐浏览器，部分功能可能不支持'
-            });
-        }, 3800);
-    }, false)
-}
-
 //获取一言
 fetch('https://v1.hitokoto.cn?max_length=24')
     .then(response => response.json())
@@ -117,11 +98,11 @@ fetch('https://v1.hitokoto.cn?max_length=24')
     })
     .catch(console.error)
 
-var times = 0;
+let times = 0;
 $('#hitokoto').click(function () {
     if (times == 0) {
         times = 1;
-        var index = setInterval(function () {
+        let index = setInterval(function () {
             times--;
             if (times == 0) {
                 clearInterval(index);
@@ -159,20 +140,20 @@ fetch('https://www.yiketianqi.com/free/day?appid=87525759&appsecret=PP6T6ikD&une
     .catch(console.error)
 
 //获取时间
-var t = null;
+let t = null;
 t = setTimeout(time, 1000);
 
 function time() {
     clearTimeout(t);
     dt = new Date();
-    var y = dt.getYear() + 1900;
-    var mm = dt.getMonth() + 1;
-    var d = dt.getDate();
-    var weekday = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
-    var day = dt.getDay();
-    var h = dt.getHours();
-    var m = dt.getMinutes();
-    var s = dt.getSeconds();
+    let y = dt.getYear() + 1900;
+    let mm = dt.getMonth() + 1;
+    let d = dt.getDate();
+    let weekday = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+    let day = dt.getDay();
+    let h = dt.getHours();
+    let m = dt.getMinutes();
+    let s = dt.getSeconds();
     if (h < 10) {
         h = "0" + h;
     }
@@ -235,7 +216,7 @@ $("#phone").mouseover(function () {
 });
 
 //更多页面切换
-var shoemore = false;
+let shoemore = false;
 $('#switchmore').on('click', function () {
     shoemore = !shoemore;
     if (shoemore && $(document).width() >= 990) {
@@ -255,7 +236,7 @@ $('#close').on('click', function () {
 });
 
 //移动端菜单栏切换
-var switchmenu = false;
+let switchmenu = false;
 $('#switchmenu').on('click', function () {
     switchmenu = !switchmenu;
     if (switchmenu) {
@@ -305,7 +286,7 @@ window.addEventListener('load', function () {
 })
 
 //移动端切换功能区
-var changemore = false;
+let changemore = false;
 $('#changemore').on('click', function () {
     changemore = !changemore;
     if (changemore) {
@@ -333,24 +314,53 @@ document.oncontextmenu = function () {
 }
 
 //自动变灰
-var myDate = new Date;
-var mon = myDate.getMonth() + 1;
-var date = myDate.getDate();
-var days = ['4.4', '5.12', '7.7', '9.9', '9.18', '12.13'];
-for (var day of days) {
-    var d = day.split('.');
+let myDate = new Date;
+let mon = myDate.getMonth() + 1;
+let date = myDate.getDate();
+let days = ['4.4', '5.12', '7.7', '9.9', '9.18', '12.13'];
+for (let day of days) {
+    let d = day.split('.');
     if (mon == d[0] && date == d[1]) {
         document.write(
             '<style>html{-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);_filter:none}</style>'
-        )
+        );
         $("#change").html("Silence&nbsp;in&nbsp;silence");
         $("#change1").html("今天是中国国家纪念日，全站已切换为黑白模式");
         window.addEventListener('load', function () {
-            iziToast.show({
-                timeout: 14000,
-                icon: "fa-solid fa-candle-holder",
-                message: '今天是中国国家纪念日'
-            });
+            setTimeout(function () {
+                iziToast.show({
+                    timeout: 14000,
+                    icon: "fa-solid fa-clock",
+                    message: '今天是中国国家纪念日'
+                });
+            }, 3800);
         }, false);
     }
 }
+
+	//控制台输出
+    console.clear();
+    let styleTitle1 = `
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(244,167,89);
+    `
+    let styleTitle2 = `
+    font-size:12px;
+    color: rgb(244,167,89);
+    `
+    let styleContent = `
+    color: rgb(30,152,255);
+    `
+    let title1 = 'WayneのHome'
+    let title2 = `
+                                                
+    `
+    let content = `
+    版 本 号：1.2.0
+    更新日期：2022-08-02
+    主页:  https://soga.ml/
+    Github:  https://github.com/Waynenet/home
+    `
+    console.log(`%c${title1} %c${title2}
+    %c${content}`, styleTitle1, styleTitle2, styleContent)

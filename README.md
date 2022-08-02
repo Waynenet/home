@@ -8,7 +8,7 @@
 
 >主页的 Logo 字体已经过压缩，若用本站 Logo 以外的字母会变回默认字体
 
->天气 API 需 [自行申请](https://www.tianqiapi.com/)，或更换其他 API
+>天气 API 需 [自行申请](https://www.tianqiapi.com/)，或更换其他 API [和风天气](https://dev.qweather.com/) [ROLL](https://www.mxnzp.com/doc/list)
 
 ### Demo
 >由于 CDN 缓存原因，查看最新效果可能需要 `Ctrl` + `F5` 强制刷新浏览器缓存
@@ -25,19 +25,20 @@
 - [x] 时光进度条
 - [x] 音乐播放器
 - [x] 移动端适配
-* [ ] 还没想好呢
+* [ ] 去除 jQuery 依赖
+* [ ] VUE 重构
 
 ### 音乐
 
 >本项目采用了基于 `MetingJS` 的 `Aplayer` 音乐播放器，可实现快速自定义歌单  
->*仅支持 **中国大陆地区**，其他区域请将 [以下内容](https://file.imsyy.top/js/music/music-other.js) 替换 `music.js` 以实现音乐播放器的正常使用
+>*仅支持 **中国大陆地区**，其他区域请将以下内容替换 `music.js` 以实现音乐播放器的正常使用
 
 更改 `music.js` 的参数即可实现自定义歌单列表
 
 ```js
-var server = "tencent"; //netease: 网易云音乐; tencent: QQ音乐; kugou: 酷狗音乐; xiami: 虾米; kuwo: 酷我
-var type = "playlist"; //song: 单曲; playlist: 歌单; album: 唱片
-var id = "7476871946"; //封面 ID / 单曲 ID / 歌单 ID
+let server = "tencent"; //netease: 网易云音乐; tencent: QQ音乐; kugou: 酷狗音乐; xiami: 虾米; kuwo: 酷我
+let type = "playlist"; //song: 单曲; playlist: 歌单; album: 唱片
+let id = "7476871946"; //封面 ID / 单曲 ID / 歌单 ID
 ```
 
 ### 插件
