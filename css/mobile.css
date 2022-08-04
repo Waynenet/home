@@ -259,13 +259,22 @@
     }
 }
 
+/*小于301px时*/
+@media (max-width: 301px) {
+    span.img-text {
+        display: none;
+    }
+    .link i {
+        margin: 0px 15px;
+    }
+}
+
 /* 大于568px时 */
 @media (min-width: 568px) {
     .iziToast {
         border-radius: 30px !important;
     }
 }
-
 
 /* 大于720px时 */
 @media (min-width: 720px) {

@@ -54,26 +54,20 @@ window.addEventListener('load', function () {
             timeout: 2500,
             icon: false,
             title: hello,
-            message: '欢迎来到我的主页'
+            message: '欢迎来到WayneのHome'
         });
     }, 800);
+
+    //延迟加载音乐播放器
+    let element = document.createElement("script");
+    element.src = "./js/music.js";
+    document.body.appendChild(element);
+
 }, false)
 
 setTimeout(function () {
     $('#loading-text').html("字体及文件加载可能需要一定时间")
 }, 3000);
-
-//延迟加载音乐播放器
-function downloadJSAtOnload() {
-    let element = document.createElement("script");
-    element.src = "./js/music.js";
-    document.body.appendChild(element);
-}
-if (window.addEventListener)
-    window.addEventListener("load", downloadJSAtOnload, false);
-else if (window.attachEvent)
-    window.attachEvent("onload", downloadJSAtOnload);
-else window.onload = downloadJSAtOnload;
 
 //新春灯笼 （ 需要时取消注释 ）
 /*
@@ -163,7 +157,6 @@ function time() {
     if (s < 10) {
         s = "0" + s;
     }
-    //document.getElementById("time").innerHTML = y + "&nbsp;年&nbsp;" + mm + "&nbsp;月&nbsp;" + d + "&nbsp;日&nbsp;" + "<span class='weekday'>" + weekday[day] + "</span><br>" + "<span class='time-text'>" + h + ":" + m + ":" + s + "</span>";
     $("#time").html(y + "&nbsp;年&nbsp;" + mm + "&nbsp;月&nbsp;" + d + "&nbsp;日&nbsp;" + "<span class='weekday'>" + weekday[day] + "</span><br>" + "<span class='time-text'>" + h + ":" + m + ":" + s + "</span>");
     t = setTimeout(time, 1000);
 }
@@ -338,29 +331,23 @@ for (let day of days) {
     }
 }
 
-	//控制台输出
-    console.clear();
-    let styleTitle1 = `
-    font-size: 20px;
-    font-weight: 600;
-    color: rgb(244,167,89);
-    `
-    let styleTitle2 = `
-    font-size:12px;
-    color: rgb(244,167,89);
-    `
-    let styleContent = `
-    color: rgb(30,152,255);
-    `
-    let title1 = 'WayneのHome'
-    let title2 = `
-                                                
-    `
-    let content = `
-    版 本 号：1.2.0
-    更新日期：2022-08-02
-    主页:  https://soga.ml/
-    Github:  https://github.com/Waynenet/home
-    `
-    console.log(`%c${title1} %c${title2}
-    %c${content}`, styleTitle1, styleTitle2, styleContent)
+//控制台输出
+console.clear();
+let styleTitle = `
+font-size: 20px;
+font-weight: 600;
+color: rgb(244,167,89);
+`
+let styleContent = `
+color: rgb(30,152,255);
+`
+let title = 'WayneのHome'
+let content = `
+版 本 号：1.2.1
+更新日期：2022-08-04
+
+主页:  https://soga.ml/
+Github:  https://github.com/Waynenet/home
+`
+console.log(`%c${title}
+%c${content}`, styleTitle, styleContent)
