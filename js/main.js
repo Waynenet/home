@@ -193,7 +193,7 @@ $("#email").mouseover(function () {
     $("#link-text").html("通过这里联系我");
 });
 $("#telegram").mouseover(function () {
-    $("#link-text").html("你懂的 ~");
+    $("#link-text").html("请打电报");
 }).mouseout(function () {
     $("#link-text").html("通过这里联系我");
 });
@@ -333,21 +333,34 @@ for (let day of days) {
 
 //控制台输出
 console.clear();
-let styleTitle = `
+let styleTitle1 = `
 font-size: 20px;
 font-weight: 600;
+color: rgb(244,167,89);
+`
+let styleTitle2 = `
+font-size:16px;
 color: rgb(244,167,89);
 `
 let styleContent = `
 color: rgb(30,152,255);
 `
-let title = 'WayneのHome'
+let title1 = 'WayneのHome'
+let title2 = `
+==============================
+#   #    #   #   # #   # #####
+#   #   # #   # #  ##  # #
+# # #  #####   #   # # # #####
+## ##  #   #   #   #  ## #
+#   #  #   #   #   #   # #####
+==============================
+`
 let content = `
-版 本 号：1.2.1
-更新日期：2022-08-04
+版 本 号：1.2.2
+更新日期：2022-08-07
 
 主页:  https://soga.ml/
 Github:  https://github.com/Waynenet/home
 `
-console.log(`%c${title}
-%c${content}`, styleTitle, styleContent)
+console.log(`%c${title1} %c${title2}
+%c${content}`, styleTitle1, styleTitle2, styleContent)
