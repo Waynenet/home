@@ -1023,11 +1023,6 @@ footer {
     word-break: break-all !important;
 }
 
-.iziToast>.iziToast-close {
-    background: url(https://cdn.jsdelivr.net/gh/imsyy/file/pic/close.png) no-repeat 50% 50% !important;
-    background-size: 8px !important;
-}
-
 /* 滚动条样式 */
 ::-webkit-scrollbar {
     width: 6px;
