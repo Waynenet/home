@@ -49,7 +49,7 @@ let id = "7476871946"; //封面 ID / 单曲 ID / 歌单 ID
 
 ### API
 
-* [MetingAPI By 武恩赐](https://api.wuenci.com/meting/api/)
+* [MetingAPI By injahow](https://api.injahow.cn/meting/)
 * [小歪 API](https://api.ixiaowai.cn/)
 * [天气 API](https://www.tianqiapi.com/)
 * [Hitokoto 一言](https://hitokoto.cn/)

@@ -40,7 +40,7 @@ class MetingJSElement extends HTMLElement {
             let d = b[c];
             this.meta[d] = a[d], delete a[d]
         }
-        this.config = a, this.api = this.meta.api || window.meting_api || "https://api.wuenci.com/meting/api/?server=:server&type=:type&id=:id&r=:r", this.meta.auto && this._parse_link()
+        this.config = a, this.api = this.meta.api || window.meting_api || "https://api.injahow.cn/meting/?server=:server&type=:type&id=:id&r=:r", this.meta.auto && this._parse_link()
     }
     _parse_link() {
         let a = [
