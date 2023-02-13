@@ -71,16 +71,16 @@ setTimeout(function () {
 
 //新春灯笼 （ 需要时取消注释 ）
 
-new_element=document.createElement("link");
-new_element.setAttribute("rel","stylesheet");
-new_element.setAttribute("type","text/css");
-new_element.setAttribute("href","./css/lantern.css");
-document.body.appendChild(new_element);
-
-new_element=document.createElement("script");
-new_element.setAttribute("type","text/javascript");
-new_element.setAttribute("src","./js/lantern.js");
-document.body.appendChild(new_element);
+//new_element=document.createElement("link");
+//new_element.setAttribute("rel","stylesheet");
+//new_element.setAttribute("type","text/css");
+//new_element.setAttribute("href","./css/lantern.css");
+//document.body.appendChild(new_element);
+//
+//new_element=document.createElement("script");
+//new_element.setAttribute("type","text/javascript");
+//new_element.setAttribute("src","./js/lantern.js");
+//document.body.appendChild(new_element);
 
 
 //获取一言
@@ -119,8 +119,6 @@ $('#hitokoto').click(function () {
 });
 
 //获取天气
-//每日限量 100 次
-//请前往 https://www.tianqiapi.com/ 申请(免费)
 fetch('https://www.yiketianqi.com/free/day?appid=87525759&appsecret=PP6T6ikD&unescape=1')
     .then(response => response.json())
     .then(data => {
@@ -356,8 +354,8 @@ let title2 = `
 ==============================
 `
 let content = `
-版 本 号：1.2.4
-更新日期：2023-01-23
+版 本 号：1.2.5
+更新日期：2023-02-13
 
 主页:  https://soga.ml/
 Github:  https://github.com/Waynenet/home
