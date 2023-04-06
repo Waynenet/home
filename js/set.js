@@ -39,10 +39,10 @@ function setBgImgInit() {
             $('#bg').attr('src', 'https://api.dujin.org/bing/1920.php'); //必应每日
             break;
         case "3":
-            $('#bg').attr('src', 'https://api.ixiaowai.cn/gqapi/gqapi.php'); //随机风景
+            $('#bg').attr('src', 'https://api.ghser.com/random/fengjing.php'); //随机风景
             break;
         case "4":
-            $('#bg').attr('src', 'https://api.ixiaowai.cn/api/api.php'); //随机动漫
+            $('#bg').attr('src', 'https://api.ghser.com/random/pc.php'); //随机动漫
             break;
     }
 }
@@ -78,7 +78,7 @@ $(document).ready(function () {
 
         if (type === "3") {
             setBgImg(bg_img);
-            $('#bg').attr('src', 'https://api.ixiaowai.cn/gqapi/gqapi.php'); //随机风景
+            $('#bg').attr('src', 'https://api.ghser.com/random/fengjing.php'); //随机风景
             iziToast.show({
                 icon: "fa-solid fa-image",
                 timeout: 2500,
@@ -88,7 +88,7 @@ $(document).ready(function () {
 
         if (type === "4") {
             setBgImg(bg_img);
-            $('#bg').attr('src', 'https://api.ixiaowai.cn/api/api.php'); //随机动漫
+            $('#bg').attr('src', 'https://api.ghser.com/random/pc.php'); //随机动漫
             iziToast.show({
                 icon: "fa-solid fa-image",
                 timeout: 2500,

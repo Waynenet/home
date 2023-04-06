@@ -50,7 +50,8 @@ let id = "7476871946"; //封面 ID / 单曲 ID / 歌单 ID
 ### API
 
 * [MetingAPI By injahow](https://api.injahow.cn/meting/)
-* [小歪 API](https://api.ixiaowai.cn/)
+* [缙哥哥博客 API](https://www.dujin.org/3618.html)
+* [三秋 API](https://api.ghser.com/)
 * [天气 API](https://www.tianqiapi.com/)
 * [Hitokoto 一言](https://hitokoto.cn/)
 
