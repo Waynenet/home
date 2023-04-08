@@ -305,28 +305,31 @@ document.oncontextmenu = function () {
 }
 
 //自动变灰
-let myDate = new Date;
-let mon = myDate.getMonth() + 1;
-let date = myDate.getDate();
-let days = ['4.4', '5.12', '7.7', '9.9', '9.18', '12.13'];
-for (let day of days) {
-    let d = day.split('.');
-    if (mon == d[0] && date == d[1]) {
-        document.write(
-            '<style>html{-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);_filter:none}</style>'
-        );
-        $("#change").html("Silence&nbsp;in&nbsp;silence");
-        $("#change1").html("今天是中国国家纪念日，全站已切换为黑白模式");
-        window.addEventListener('load', function () {
-            setTimeout(function () {
-                iziToast.show({
-                    timeout: 14000,
-                    icon: "fa-solid fa-clock",
-                    message: '今天是中国国家纪念日'
-                });
-            }, 3800);
-        }, false);
-    }
+const anniversaries = {
+    5.12: "汶川大地震纪念日",
+    9.18: "九·一八事变纪念日（中国国耻日）",
+    12.13: "南京大屠杀死难者国家公祭日",
+};
+
+const myDate = new Date();
+const mon = myDate.getMonth() + 1;
+const date = myDate.getDate();
+const key = `${mon}.${date}`;
+if (anniversaries.hasOwnProperty(key)) {
+    document.write(
+        '<style>html{-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);_filter:none}</style>'
+    );
+    $("#change").html("Silence&nbsp;in&nbsp;silence");
+    $("#change1").html("今天是" + anniversaries[key]);
+    window.addEventListener('load', function () {
+        setTimeout(function () {
+            iziToast.show({
+                timeout: 14000,
+                icon: "fa-solid fa-clock",
+                message: '今天是' + anniversaries[key]
+            });
+        }, 3800);
+    }, false);
 }
 
 //控制台输出
@@ -354,8 +357,8 @@ let title2 = `
 ==============================
 `
 let content = `
-版 本 号：1.3.1
-更新日期：2023-04-06
+版 本 号：1.4.0
+更新日期：2023-04-08
 
 主页:  https://soga.ml/
 Github:  https://github.com/Waynenet/home

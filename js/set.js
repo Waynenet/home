@@ -55,45 +55,25 @@ $(document).ready(function () {
         let type = $(this).val();
         let bg_img = getBgImg();
         bg_img["type"] = type;
+        setBgImg(bg_img);
 
         if (type === "1") {
-            setBgImg(bg_img);
             $('#bg').attr('src', `./img/background${1 + ~~(Math.random() * 10)}.webp`) //随机默认壁纸
-            iziToast.show({
-                icon: "fa-solid fa-image",
-                timeout: 2500,
-                message: '壁纸设置成功',
-            });
         }
-
         if (type === "2") {
-            setBgImg(bg_img);
             $('#bg').attr('src', 'https://api.dujin.org/bing/1920.php'); //必应每日
-            iziToast.show({
-                icon: "fa-solid fa-image",
-                timeout: 2500,
-                message: '壁纸设置成功',
-            });
         }
-
         if (type === "3") {
-            setBgImg(bg_img);
             $('#bg').attr('src', 'https://api.ghser.com/random/fengjing.php'); //随机风景
-            iziToast.show({
-                icon: "fa-solid fa-image",
-                timeout: 2500,
-                message: '壁纸设置成功',
-            });
+        }
+        if (type === "4") {
+            $('#bg').attr('src', 'https://api.ghser.com/random/pc.php'); //随机动漫
         }
 
-        if (type === "4") {
-            setBgImg(bg_img);
-            $('#bg').attr('src', 'https://api.ghser.com/random/pc.php'); //随机动漫
-            iziToast.show({
-                icon: "fa-solid fa-image",
-                timeout: 2500,
-                message: '壁纸设置成功',
-            });
-        }
+        iziToast.show({
+            icon: "fa-solid fa-image",
+            timeout: 2500,
+            message: '壁纸设置成功',
+        });
     });
 });
