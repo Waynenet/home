@@ -39,10 +39,10 @@ function setBgImgInit() {
             $('#bg').attr('src', 'https://api.dujin.org/bing/1920.php'); //必应每日
             break;
         case "3":
-            $('#bg').attr('src', 'https://api.ghser.com/random/fengjing.php'); //随机风景
+            $('#bg').attr('src', 'https://api.yimian.xyz/img?type=wallpaper'); //随机风景
             break;
         case "4":
-            $('#bg').attr('src', 'https://api.ghser.com/random/pc.php'); //随机动漫
+            $('#bg').attr('src', 'https://api.yimian.xyz/img?type=moe&size=1920x1080'); //随机动漫
             break;
     }
 }
@@ -64,10 +64,10 @@ $(document).ready(function () {
             $('#bg').attr('src', 'https://api.dujin.org/bing/1920.php'); //必应每日
         }
         if (type === "3") {
-            $('#bg').attr('src', 'https://api.ghser.com/random/fengjing.php'); //随机风景
+            $('#bg').attr('src', 'https://api.yimian.xyz/img?type=wallpaper'); //随机风景
         }
         if (type === "4") {
-            $('#bg').attr('src', 'https://api.ghser.com/random/pc.php'); //随机动漫
+            $('#bg').attr('src', 'https://api.yimian.xyz/img?type=moe&size=1920x1080'); //随机动漫
         }
 
         iziToast.show({

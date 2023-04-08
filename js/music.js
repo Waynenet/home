@@ -38,13 +38,6 @@ $.ajax({
                 $('.power').css("cssText", "display:none");
                 $('#lrc').css("cssText", "display:block !important");
             };
-            // Notification.requestPermission().then(res => {
-            //     console.log(res)
-            // });
-            // new Notification('音乐通知', {
-            //     body: '正在播放：' + music,
-            //     tag: 1
-            // });
         });
 
         ap.on('pause', function () {
@@ -120,9 +113,9 @@ $.ajax({
             if (x == 0) {
                 $("#volume-ico").html("<i class='fa-solid fa-volume-xmark'></i>");
             } else if (x > 0 && x <= 0.3) {
-                $("#volume-ico").html("<i class='fa-solid fa-volume-low'></i>");
+                $("#volume-ico").html("<i class='fa-solid fa-volume-off'></i>");
             } else if (x > 0.3 && x <= 0.6) {
-                $("#volume-ico").html("<i class='fa-solid fa-volume'></i>");
+                $("#volume-ico").html("<i class='fa-solid fa-volume-low'></i>");
             } else {
                 $("#volume-ico").html("<i class='fa-solid fa-volume-high'></i>");
             }

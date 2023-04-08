@@ -357,8 +357,8 @@ let title2 = `
 ==============================
 `
 let content = `
-版 本 号：1.4.0
-更新日期：2023-04-08
+版 本 号：1.4.1
+更新日期：2023-04-09
 
 主页:  https://soga.ml/
 Github:  https://github.com/Waynenet/home
