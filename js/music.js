@@ -17,6 +17,7 @@ $.ajax({
             lrcType: 3,
             audio: data,
         });
+        $("#volume-ico").html("<i class='fa-solid fa-volume-low'></i>");
 
         /* 底栏歌词 */
         setInterval(function () {
