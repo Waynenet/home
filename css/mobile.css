@@ -252,15 +252,15 @@
 
 }
 
-/*小于402px时*/
-@media (max-width: 402px) {
+/*小于380px时*/
+@media (max-width: 380px) {
     .main-img img {
         display: none;
     }
 }
 
-/*小于301px时*/
-@media (max-width: 301px) {
+/*小于415px时*/
+@media (max-width: 415px) {
     span.img-text {
         display: none;
     }

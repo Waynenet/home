@@ -357,10 +357,10 @@ let title2 = `
 ==============================
 `
 let content = `
-版 本 号：1.4.2
-更新日期：2023-04-09
+版 本 号：1.5.0
+更新日期：2023-05-02
 
-主页:  https://soga.ml/
+主页:  https://kong.pub/
 Github:  https://github.com/Waynenet/home
 `
 console.log(`%c${title1} %c${title2}
