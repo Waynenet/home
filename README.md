@@ -17,14 +17,14 @@
 
 ### 功能
 
-✅ 载入动画
-✅ 站点简介
-✅ Hitokoto 一言
-✅ 日期及时间
-✅ 实时天气
-✅ 时光进度条
-✅ 音乐播放器
-✅ 移动端适配
+✅ 载入动画     
+✅ 站点简介      
+✅ Hitokoto 一言     
+✅ 日期及时间      
+✅ 实时天气      
+✅ 时光进度条     
+✅ 音乐播放器      
+✅ 移动端适配     
 
 ### 音乐
 
@@ -41,18 +41,18 @@ let id = "7476871946"; //封面 ID / 单曲 ID / 歌单 ID
 
 ### 插件
 
-1️⃣ [Bootstrap](https://getbootstrap.com/)
-2️⃣ [iziToast](https://izitoast.marcelodolza.com/)
-3️⃣ [Font Awesome](https://fontawesome.com/)
-4️⃣ [jQuery](https://jquery.com/)
-5️⃣ [Aplayer](https://aplayer.js.org/)
+1️⃣ [Bootstrap](https://getbootstrap.com/)     
+2️⃣ [iziToast](https://izitoast.marcelodolza.com/)     
+3️⃣ [Font Awesome](https://fontawesome.com/)     
+4️⃣ [jQuery](https://jquery.com/)      
+5️⃣ [Aplayer](https://aplayer.js.org/)     
 
 ### API
 
-1️⃣ [MetingAPI By injahow](https://api.injahow.cn/meting/)
-2️⃣ [缙哥哥博客 API](https://www.dujin.org/3618.html)
-3️⃣ [IoTcat API](https://www.eee.dog/tech/rand-pic-api.html)
-4️⃣ [天气 API](https://www.tianqiapi.com/)
-5️⃣ [Hitokoto 一言](https://hitokoto.cn/)
+1️⃣ [MetingAPI By injahow](https://api.injahow.cn/meting/)     
+2️⃣ [缙哥哥博客 API](https://www.dujin.org/3618.html)      
+3️⃣ [IoTcat API](https://www.eee.dog/tech/rand-pic-api.html)     
+4️⃣ [天气 API](https://www.tianqiapi.com/)      
+5️⃣ [Hitokoto 一言](https://hitokoto.cn/)      
 
 <a title="Copyright" target="_blank" href="https://kong.pub/"><img src="https://img.shields.io/badge/Copyright%20%C2%A9%202022--2023-Wayne-red"></a>
