@@ -8,12 +8,10 @@
 
 >主页的 Logo 字体已经过压缩，若用本站 Logo 以外的字母会变回默认字体
 
->天气 API 需 [自行申请](https://www.tianqiapi.com/)，或更换其他 API [【和风天气】](https://dev.qweather.com/) [【ROLL】](https://www.mxnzp.com/doc/list)
-
 ### Demo
 >由于 CDN 缓存原因，查看最新效果可能需要 `Ctrl` + `F5` 强制刷新浏览器缓存
 
-- [WayneのHome](https://kong.pub/)
+- [WayneのHome域名已过期](https://kong.pub/)
 
 ### 功能
 
@@ -52,7 +50,7 @@ let id = "7476871946"; //封面 ID / 单曲 ID / 歌单 ID
 1️⃣ [MetingAPI By injahow](https://api.injahow.cn/meting/)     
 2️⃣ [缙哥哥博客 API](https://www.dujin.org/3618.html)      
 3️⃣ [IoTcat API](https://www.eee.dog/tech/rand-pic-api.html)     
-4️⃣ [天气 API](https://www.tianqiapi.com/)      
+4️⃣ [教书先生 API](https://api.oioweb.cn/doc/weather/GetWeather)      
 5️⃣ [Hitokoto 一言](https://hitokoto.cn/)      
 
-<a title="Copyright" target="_blank" href="https://kong.pub/"><img src="https://img.shields.io/badge/Copyright%20%C2%A9%202022--2023-Wayne-red"></a>
+<a title="Copyright" target="_blank" href="https://kong.pub/"><img src="https://img.shields.io/badge/Copyright%20%C2%A9%202022--2024-Wayne-red"></a>

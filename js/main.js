@@ -119,15 +119,15 @@ $('#hitokoto').click(function () {
 });
 
 //获取天气
-fetch('https://www.yiketianqi.com/free/day?appid=87525759&appsecret=PP6T6ikD&unescape=1')
+fetch('https://api.oioweb.cn/api/weather/GetWeather')
     .then(response => response.json())
     .then(data => {
-        $('#wea_text').html(data.wea)
-        $('#city_text').html(data.city)
-        $('#tem_night').html(data.tem_night)
-        $('#tem_day').html(data.tem_day)
-        $('#win_text').html(data.win)
-        $('#win_speed').html(data.win_speed)
+        $('#wea_text').html(data.result.condition.day_weather)
+        $('#city_text').html(data.result.city.City)
+        $('#tem_night').html(data.result.condition.min_degree)
+        $('#tem_day').html(data.result.condition.max_degree)
+        $('#win_text').html(data.result.condition.day_wind_direction)
+        $('#win_speed').html(data.result.condition.day_wind_power)
     })
     .catch(console.error)
 
@@ -357,10 +357,10 @@ let title2 = `
 ==============================
 `
 let content = `
-版 本 号：1.5.0
-更新日期：2023-05-02
+版 本 号：1.6.0
+更新日期：2024-09-27
 
-主页:  https://kong.pub/
+主页:  https://kong.pub/域名已过期
 Github:  https://github.com/Waynenet/home
 `
 console.log(`%c${title1} %c${title2}
