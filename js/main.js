@@ -357,8 +357,8 @@ let title2 = `
 ==============================
 `
 let content = `
-版 本 号：1.6.0
-更新日期：2024-09-27
+版 本 号：1.6.1
+更新日期：2024-09-29
 
 主页:  https://kong.pub/域名已过期
 Github:  https://github.com/Waynenet/home
