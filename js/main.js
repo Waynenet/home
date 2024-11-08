@@ -126,8 +126,6 @@ fetch('https://api.vvhan.com/api/weather')
         $('#city_text').html(data.city)
         $('#tem_low').html(data.data.low)
         $('#tem_high').html(data.data.high)
-        $('#win_text').html(data.data.fengxiang)
-        $('#win_speed').html(data.data.fengli)
     })
     .catch(console.error)
 
@@ -357,7 +355,7 @@ let title2 = `
 ==============================
 `
 let content = `
-版 本 号：1.6.2
+版 本 号：1.6.3
 更新日期：2024-11-08
 
 主页:  https://waynenet.pages.dev
