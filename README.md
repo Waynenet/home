@@ -11,7 +11,7 @@
 ### Demo
 >由于 CDN 缓存原因，查看最新效果可能需要 `Ctrl` + `F5` 强制刷新浏览器缓存
 
-- [WayneのHome域名已过期](https://kong.pub/)
+- [WayneのHome](https://waynenet.pages.dev/)
 
 ### 功能
 
@@ -49,8 +49,9 @@ let id = "7476871946"; //封面 ID / 单曲 ID / 歌单 ID
 
 1️⃣ [MetingAPI By injahow](https://api.injahow.cn/meting/)     
 2️⃣ [缙哥哥博客 API](https://www.dujin.org/3618.html)      
-3️⃣ [IoTcat API](https://www.eee.dog/tech/rand-pic-api.html)     
-4️⃣ [教书先生 API](https://api.oioweb.cn/doc/weather/GetWeather)      
-5️⃣ [Hitokoto 一言](https://hitokoto.cn/)      
+3️⃣ [栗次元 随机二次元风景图](https://t.mwm.moe/)       
+4️⃣ [韩小韩 WebAPI 接口站](https://api.vvhan.com/)       
+5️⃣ [Hitokoto 一言](https://hitokoto.cn/)        
+6️⃣ [远方博客 随机风景图](https://blog.ltyuanfang.cn/)       
 
 <a title="Copyright" target="_blank" href="https://kong.pub/"><img src="https://img.shields.io/badge/Copyright%20%C2%A9%202022--2024-Wayne-red"></a>

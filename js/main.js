@@ -119,15 +119,15 @@ $('#hitokoto').click(function () {
 });
 
 //获取天气
-fetch('https://api.oioweb.cn/api/weather/GetWeather')
+fetch('https://api.vvhan.com/api/weather')
     .then(response => response.json())
     .then(data => {
-        $('#wea_text').html(data.result.condition.day_weather)
-        $('#city_text').html(data.result.city.City)
-        $('#tem_night').html(data.result.condition.min_degree)
-        $('#tem_day').html(data.result.condition.max_degree)
-        $('#win_text').html(data.result.condition.day_wind_direction)
-        $('#win_speed').html(data.result.condition.day_wind_power)
+        $('#wea_text').html(data.data.type)
+        $('#city_text').html(data.city)
+        $('#tem_low').html(data.data.low)
+        $('#tem_high').html(data.data.high)
+        $('#win_text').html(data.data.fengxiang)
+        $('#win_speed').html(data.data.fengli)
     })
     .catch(console.error)
 
@@ -357,10 +357,10 @@ let title2 = `
 ==============================
 `
 let content = `
-版 本 号：1.6.1
-更新日期：2024-09-29
+版 本 号：1.6.2
+更新日期：2024-11-08
 
-主页:  https://kong.pub/域名已过期
+主页:  https://waynenet.pages.dev
 Github:  https://github.com/Waynenet/home
 `
 console.log(`%c${title1} %c${title2}
