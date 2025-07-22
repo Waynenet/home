@@ -2,25 +2,19 @@
 
 /* 字体 */
 @font-face {
-    font-family: "Pacifico-Regular";
-    src: url('../font/Pacifico-Regular.ttf') format('truetype');
+    font-family: "RubikPuddles-Regular";
+    src: url('../font/RubikPuddles-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: "Pacifico-Regularl";
+    src: url('../font/Pacifico-Regularl.woff') format('woff');
 }
 
 @font-face {
     font-family: "UnidreamLED";
     src: url('../font/UnidreamLED.ttf') format('truetype');
 }
-
-@font-face {
-    font-family: "Facon-2";
-    src: url('../font/Facon-2.ttf') format('truetype');
-}
-
-/*@font-face {
-    font-family: "MiSans";
-    src: url('../font/MiSans-Regular.woff') format('woff');
-    font-display: sans-serif;
-}*/
 
 /* 全局样式 */
 html,
@@ -198,7 +192,7 @@ main {
 
 span.img-title {
     font-size: 5rem;
-    font-family: 'Facon-2' !important;
+    font-family: 'RubikPuddles-Regular' !important;
 }
 
 span.img-github {
@@ -230,7 +224,7 @@ span.img-github {
 }
 
 span#change {
-    font-family: 'Pacifico-Regular' !important;
+    font-family: 'Pacifico-Regularl' !important;
 }
 
 .fa-solid.fa-quote-right {

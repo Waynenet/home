@@ -63,10 +63,6 @@
         width: 110px;
     }
 
-    span.img-title {
-        font-size: 3rem;
-    }
-
     /*链接卡片文字*/
     span.link-name {
         display: none !important;
@@ -80,7 +76,6 @@
 
 /*小于840px时*/
 @media (max-width: 840px) {
-
 
     /*社交链接*/
     .social {
@@ -131,6 +126,10 @@
     /*右侧栏边距*/
     .col.right {
         margin-left: 0rem;
+    }
+
+    .main-img {
+        justify-self: center;
     }
 
     /*简介*/
@@ -318,13 +317,23 @@
     display: inline !important;
     text-align: center;
     position: fixed;
-    top: 8%;
+    top: 4%;
     font-size: 1.75rem;
 }
 
 /*第二屏logo*/
+.logo-two img {
+    width: 100px;
+}
+
 .logo-text {
-    font-family: 'Facon-2' !important;
+    font-family: 'RubikPuddles-Regular' !important;
+}
+
+@media (max-height: 770px) {
+    .rightone {
+        display: none !important;
+    }
 }
 
 /*切换动画*/
