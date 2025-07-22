@@ -67,10 +67,6 @@
         font-size: 3rem;
     }
 
-    span.img-text {
-        font-size: 1rem;
-    }
-
     /*链接卡片文字*/
     span.link-name {
         display: none !important;
@@ -98,15 +94,6 @@
 
     .link i {
         margin: 0px 20px;
-    }
-}
-
-/*小于789px时*/
-@media (max-width: 789px) {
-
-    /*标题文字*/
-    span.img-text {
-        display: none;
     }
 }
 
@@ -144,11 +131,6 @@
     /*右侧栏边距*/
     .col.right {
         margin-left: 0rem;
-    }
-
-    /*标题文字*/
-    span.img-text {
-        display: inline;
     }
 
     /*简介*/
@@ -261,9 +243,6 @@
 
 /*小于415px时*/
 @media (max-width: 415px) {
-    span.img-text {
-        display: none;
-    }
     .link i {
         margin: 0px 15px;
     }

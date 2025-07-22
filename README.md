@@ -11,7 +11,7 @@
 ### Demo
 >由于 CDN 缓存原因，查看最新效果可能需要 `Ctrl` + `F5` 强制刷新浏览器缓存
 
-- [WayneのHome](https://waynenet.pages.dev/)
+- [WayneのHome](https://home.3301.qzz.io/)
 
 ### 功能
 
@@ -54,4 +54,4 @@ let id = "7476871946"; //封面 ID / 单曲 ID / 歌单 ID
 5️⃣ [Hitokoto 一言](https://hitokoto.cn/)        
 6️⃣ [远方博客 随机风景图](https://blog.ltyuanfang.cn/)       
 
-<a title="Copyright" target="_blank" href="https://kong.pub/"><img src="https://img.shields.io/badge/Copyright%20%C2%A9%202022--2024-Wayne-red"></a>
+<a title="Copyright" target="_blank" href="https://home.3301.qzz.io/"><img src="https://img.shields.io/badge/Copyright%20%C2%A9%202022--2025-Wayne-red"></a>

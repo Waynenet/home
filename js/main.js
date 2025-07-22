@@ -355,10 +355,10 @@ let title2 = `
 ==============================
 `
 let content = `
-版 本 号：1.6.3
-更新日期：2024-11-08
+版 本 号：1.6.4
+更新日期：2025-07-22
 
-主页:  https://waynenet.pages.dev
+主页:  https://home.3301.qzz.io
 Github:  https://github.com/Waynenet/home
 `
 console.log(`%c${title1} %c${title2}
