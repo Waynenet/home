@@ -577,14 +577,14 @@ i.iconfont.icon-z_shangpinheji {
 /* 更多页面 */
 .more {
     display: none !important;
-    width: 46%;
+    width: 34%;
     z-index: 999;
     position: fixed;
-    height: 82%;
-    right: 4%;
+    height: 80%;
+    right: 16%;
     background: rgb(0 0 0 / 25%);
     backdrop-filter: blur(10px);
-    top: 7%;
+    top: 10%;
     border-radius: 6px;
     padding: 30px;
 }
@@ -640,8 +640,17 @@ i.iconfont.icon-z_shangpinheji {
     width: 100%;
 }
 
-.date-text {
+.date-text1,
+.date-text2 {
     margin: 1rem 0rem 0.5rem 0rem;
+}
+
+.date-text1 {
+    float: left;
+}
+
+.date-text2 {
+    float: right;
 }
 
 /* 其他链接 */
