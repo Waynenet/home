@@ -7,8 +7,8 @@
 }
 
 @font-face {
-    font-family: "Pacifico-Regularl";
-    src: url('../font/Pacifico-Regularl.woff') format('woff');
+    font-family: "Pacifico-Regular";
+    src: url('../font/Pacifico-Regular.woff') format('woff');
 }
 
 @font-face {
@@ -224,7 +224,7 @@ span.img-github {
 }
 
 span#change {
-    font-family: 'Pacifico-Regularl' !important;
+    font-family: 'Pacifico-Regular' !important;
 }
 
 .fa-solid.fa-quote-right {
