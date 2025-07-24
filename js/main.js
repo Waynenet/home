@@ -49,7 +49,7 @@ window.addEventListener('load', function () {
         iziToast.show({
             timeout: 2500,
             icon: false,
-            title: hello,
+            title: timeProcessor.getGreeting(),
             message: '欢迎来到WayneのHome'
         });
     }, 800);
@@ -269,37 +269,3 @@ document.oncontextmenu = function () {
     });
     return false;
 }
-
-//控制台输出
-console.clear();
-let styleTitle1 = `
-font-size: 20px;
-font-weight: 600;
-color: rgb(244,167,89);
-`
-let styleTitle2 = `
-font-size:16px;
-color: rgb(244,167,89);
-`
-let styleContent = `
-color: rgb(30,152,255);
-`
-let title1 = 'WayneのHome'
-let title2 = `
-==============================
-#   #    #   #   # #   # #####
-#   #   # #   # #  ##  # #
-# # #  #####   #   # # # #####
-## ##  #   #   #   #  ## #
-#   #  #   #   #   #   # #####
-==============================
-`
-let content = `
-版 本 号：1.7.0
-更新日期：2025-07-22
-
-主页:  https://home.3301.qzz.io
-Github:  https://github.com/Waynenet/home
-`
-console.log(`%c${title1} %c${title2}
-%c${content}`, styleTitle1, styleTitle2, styleContent)
