@@ -129,34 +129,6 @@ fetch('https://api.vvhan.com/api/weather')
     })
     .catch(console.error)
 
-//获取时间
-let t = null;
-t = setTimeout(time, 1000);
-
-function time() {
-    clearTimeout(t);
-    dt = new Date();
-    let y = dt.getYear() + 1900;
-    let mm = dt.getMonth() + 1;
-    let d = dt.getDate();
-    let weekday = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
-    let day = dt.getDay();
-    let h = dt.getHours();
-    let m = dt.getMinutes();
-    let s = dt.getSeconds();
-    if (h < 10) {
-        h = "0" + h;
-    }
-    if (m < 10) {
-        m = "0" + m;
-    }
-    if (s < 10) {
-        s = "0" + s;
-    }
-    $("#time").html(y + "&nbsp;年&nbsp;" + mm + "&nbsp;月&nbsp;" + d + "&nbsp;日&nbsp;" + "<span class='weekday'>" + weekday[day] + "</span><br>" + "<span class='time-text'>" + h + ":" + m + ":" + s + "</span>");
-    t = setTimeout(time, 1000);
-}
-
 //链接提示文字
 $("#social").mouseover(function () {
     $("#social").css({
@@ -300,34 +272,6 @@ document.oncontextmenu = function () {
         message: '为了浏览体验，本站禁用右键'
     });
     return false;
-}
-
-//自动变灰
-const anniversaries = {
-    5.12: "汶川大地震纪念日",
-    9.18: "九·一八事变纪念日（中国国耻日）",
-    12.13: "南京大屠杀死难者国家公祭日",
-};
-
-const myDate = new Date();
-const mon = myDate.getMonth() + 1;
-const date = myDate.getDate();
-const key = `${mon}.${date}`;
-if (anniversaries.hasOwnProperty(key)) {
-    document.write(
-        '<style>html{-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);_filter:none}</style>'
-    );
-    $("#change").html("Silence&nbsp;in&nbsp;silence");
-    $("#change1").html("今天是" + anniversaries[key]);
-    window.addEventListener('load', function () {
-        setTimeout(function () {
-            iziToast.show({
-                timeout: 14000,
-                icon: "fa-solid fa-clock",
-                message: '今天是' + anniversaries[key]
-            });
-        }, 3800);
-    }, false);
 }
 
 //控制台输出

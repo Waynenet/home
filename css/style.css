@@ -640,17 +640,20 @@ i.iconfont.icon-z_shangpinheji {
     width: 100%;
 }
 
-.date-text1,
-.date-text2 {
-    margin: 1rem 0rem 0.5rem 0rem;
-}
-
 .date-text1 {
+    margin: 1rem 0rem 0.5rem 0rem;
     float: left;
 }
 
 .date-text2 {
     float: right;
+}
+
+.date-text2,
+.date-text2 span {
+    color: #ffffff88;
+    font-size: 0.8rem;
+    margin-top: 1.2rem;
 }
 
 /* 其他链接 */
