@@ -601,7 +601,14 @@ i.iconfont.icon-z_shangpinheji {
     display: none;
 }
 
-/* 关闭按钮 */
+/* 按钮 */
+.gear {
+    display: none;
+    left: auto;
+    top: 4px;
+    right: 45px;
+    font-size: 1.45rem;
+}
 
 .close {
     display: none;
@@ -611,6 +618,7 @@ i.iconfont.icon-z_shangpinheji {
     font-size: 1.45rem;
 }
 
+.gear:hover,
 .close:hover {
     transform: scale(1.2);
 }

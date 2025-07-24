@@ -256,8 +256,10 @@ $('#changemore').on('click', function () {
 //更多页面显示关闭按钮
 $("#more").hover(function () {
     $('#close').css("display", "block");
+    $('#openmore').css("display", "block");
 }, function () {
     $('#close').css("display", "none");
+    $('#openmore').css("display", "none");
 })
 
 //屏蔽右键
