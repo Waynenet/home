@@ -686,7 +686,7 @@ i.iconfont.icon-z_shangpinheji {
     top: 0;
     bottom: 0;
     z-index: 1996;
-    background-color: rgba(0, 0, 0, .5);
+    background-color: rgba(0, 0, 0, .3);
     backdrop-filter: blur(20px);
     animation: fade 0.3s;
 }
@@ -700,7 +700,7 @@ i.iconfont.icon-z_shangpinheji {
     z-index: 1997;
     width: 80%;
     height: 80%;
-    background: rgb(255 255 255 / 40%);
+    background: rgb(255 255 255 / 20%);
     border-radius: 6px;
     -webkit-animation: fade .3s;
     animation: fade .3s;
@@ -731,12 +731,7 @@ i.iconfont.icon-z_shangpinheji {
 .accordion-button {
     color: white !important;
     background-color: transparent;
-    transition: 0.3s;
-
-}
-
-.accordion-button:focus {
-    border-color: #ffffff26 !important;
+    border-color: #ffffff15 !important;
     outline: none !important;
     box-shadow: none !important;
     border-radius: 8px;
@@ -744,7 +739,7 @@ i.iconfont.icon-z_shangpinheji {
 }
 
 .accordion-button:not(.collapsed) {
-    background-color: #ffffff26;
+    background-color: #ffffff15;
     border-bottom-left-radius: 0px !important;
     border-bottom-right-radius: 0px !important;
     font-weight: bold;
@@ -758,7 +753,7 @@ i.iconfont.icon-z_shangpinheji {
 
 .accordion-body {
     padding: 1rem 0rem !important;
-    background-color: #ffffff10;
+    background-color: #ffffff05;
 }
 
 .closebox {
