@@ -191,7 +191,7 @@ span.img-title {
     font-family: 'RubikPuddles-Regular' !important;
 }
 
-span.img-github {
+span.img-github span {
     font-size: 2rem;
     font-family: 'UnidreamLED' !important;
 }

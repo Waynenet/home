@@ -35,6 +35,45 @@ if (/Mobi|Tablet|iPad|iPhone|Android/i.test(navigator.userAgent)) {
     $('#pointer').css("display", "none");
 }
 
+// 确保 Service Worker 支持并已就绪
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.ready
+    .then(() => {
+      // 检查 controller 是否存在
+      if (navigator.serviceWorker.controller) {
+        // 发送版本请求
+        navigator.serviceWorker.controller.postMessage({
+          type: 'GET_VERSION'
+        });
+      } else {
+        console.warn('Service Worker controller 不存在');
+        $('span.img-github span').text('未激活');
+      }
+    })
+    .catch((error) => {
+      console.error('Service Worker 就绪失败:', error);
+      $('span.img-github span').text('加载失败');
+    });
+
+  // 监听回复
+  navigator.serviceWorker.addEventListener('message', (event) => {
+    if (event.data && event.data.type === 'VERSION_INFO') {
+      try {
+        // 移除所有非数字和点的字符
+        const cleanVersion = event.data.version.replace(/[^\d.]/g, '');
+        // 更新页面元素
+        $('span.img-github span').text(cleanVersion);
+      } catch (e) {
+        console.error('版本号处理错误:', e);
+        $('span.img-github span').text('格式错误');
+      }
+    }
+  });
+} else {
+  console.warn('当前浏览器不支持 Service Worker');
+  $('span.img-github span').text('不支持');
+}
+
 //加载完成后执行
 window.addEventListener('load', function () {
 

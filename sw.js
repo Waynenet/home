@@ -100,6 +100,16 @@ workbox.routing.registerRoute(
   })
 );
 
+//监听消息并返回版本号
+self.addEventListener('message', (event) => {
+  if (event.data.type === 'GET_VERSION') {
+    event.source.postMessage({
+      type: 'VERSION_INFO',
+      version: APP_VERSION // 传递版本号
+    });
+  }
+});
+
 // ==================== 调试信息 ====================
 console.log(`[Service Worker ${APP_VERSION}] 已激活`);
 
