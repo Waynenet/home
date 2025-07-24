@@ -2,7 +2,7 @@
 importScripts('https://gcore.jsdelivr.net/npm/workbox-sw@latest/build/workbox-sw.js');
 
 // ==================== 版本控制配置 ====================
-const APP_VERSION = 'v2.0.0';
+const APP_VERSION = 'v2.0.1';
 const CACHE_PREFIX = 'Wayne';
 
 // 设置缓存命名规则
