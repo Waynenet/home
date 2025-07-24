@@ -602,20 +602,27 @@ i.iconfont.icon-z_shangpinheji {
 }
 
 /* 按钮 */
-.gear {
-    display: none;
-    left: auto;
+.gear, .close {
+    position: fixed;
     top: 4px;
-    right: 45px;
+    left: auto;
     font-size: 1.45rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.gear {
+    right: 45px;
 }
 
 .close {
-    display: none;
-    left: auto;
-    top: 4px;
     right: 8px;
-    font-size: 1.45rem;
+}
+
+.show-buttons {
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .gear:hover,

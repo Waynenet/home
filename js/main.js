@@ -294,12 +294,10 @@ $('#changemore').on('click', function () {
 
 //更多页面显示关闭按钮
 $("#more").hover(function () {
-    $('#close').css("display", "block");
-    $('#openmore').css("display", "block");
+    $('#close, #openmore').addClass("show-buttons");
 }, function () {
-    $('#close').css("display", "none");
-    $('#openmore').css("display", "none");
-})
+    $('#close, #openmore').removeClass("show-buttons");
+});
 
 //屏蔽右键
 document.oncontextmenu = function () {
