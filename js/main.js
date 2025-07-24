@@ -18,25 +18,21 @@ iziToast.settings({
 
 //鼠标样式
 const body = document.querySelector("body");
-const element = document.getElementById("g-pointer-1");
-const element2 = document.getElementById("g-pointer-2");
-const halfAlementWidth = element.offsetWidth / 2;
-const halfAlementWidth2 = element2.offsetWidth / 2;
+const element = document.getElementById("pointer");
+const halfElementWidth = element.offsetWidth / 2;
 
 function setPosition(x, y) {
-    element2.style.transform = `translate(${x - halfAlementWidth2 + 1}px, ${y - halfAlementWidth2 + 1}px)`;
+    element.style.transform = `translate(${x - halfElementWidth + 19}px, ${y - halfElementWidth + 19}px)`;
 }
 
-body.addEventListener('mousemove', (e) => {
-    window.requestAnimationFrame(function () {
-        setPosition(e.clientX, e.clientY);
-    });
+// 监听鼠标移动，更新指针位置
+body.addEventListener("mousemove", (e) => {
+    window.requestAnimationFrame(() => setPosition(e.clientX, e.clientY));
 });
 
-//移动端除去鼠标样式
-switch (true) {
-    case navigator.userAgent.indexOf('Mobile') > 0:
-    $('#g-pointer-2').css("display", "none");
+//非桌面端去除鼠标样式
+if (/Mobi|Tablet|iPad|iPhone|Android/i.test(navigator.userAgent)) {
+    $('#pointer').css("display", "none");
 }
 
 //加载完成后执行
