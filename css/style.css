@@ -689,6 +689,7 @@ i.iconfont.icon-z_shangpinheji {
     background-color: rgba(0, 0, 0, .3);
     backdrop-filter: blur(20px);
     animation: fade 0.3s;
+    display: none;
 }
 
 .box-wrapper {
@@ -757,10 +758,14 @@ i.iconfont.icon-z_shangpinheji {
 }
 
 .closebox {
+    position: fixed;
     left: auto;
     top: 10px;
     right: 16px;
     font-size: 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .closebox:hover {

@@ -299,6 +299,12 @@ $("#more").hover(function () {
     $('#close, #openmore').removeClass("show-buttons");
 });
 
+$(".box-wrapper").hover(function () {
+    $('#closemore').addClass("show-buttons");
+}, function () {
+    $('#closemore').removeClass("show-buttons");
+});
+
 //屏蔽右键
 document.oncontextmenu = function () {
     iziToast.show({
