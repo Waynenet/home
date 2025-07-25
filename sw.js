@@ -14,6 +14,31 @@ workbox.core.setCacheNameDetails({
 workbox.core.skipWaiting();
 workbox.core.clientsClaim();
 
+// 强制立即接管页面控制权
+self.addEventListener('activate', (event) => {
+  event.waitUntil(self.clients.claim().then(() => {
+    // 激活后立即通知所有页面
+    self.clients.matchAll().then(clients => {
+      clients.forEach(client => {
+        client.postMessage({
+          type: 'VERSION_INFO',
+          version: APP_VERSION
+        });
+      });
+    });
+  }));
+});
+
+//监听消息并返回版本号
+self.addEventListener('message', (event) => {
+  if (event.data.type === 'GET_VERSION') {
+    event.source.postMessage({
+      type: 'VERSION_INFO',
+      version: APP_VERSION // 传递版本号
+    });
+  }
+});
+
 // ==================== 缓存清理逻辑 ====================
 self.addEventListener('activate', (event) => {
   const cacheWhitelist = [CACHE_PREFIX + '-' + APP_VERSION];
@@ -99,16 +124,6 @@ workbox.routing.registerRoute(
     ]
   })
 );
-
-//监听消息并返回版本号
-self.addEventListener('message', (event) => {
-  if (event.data.type === 'GET_VERSION') {
-    event.source.postMessage({
-      type: 'VERSION_INFO',
-      version: APP_VERSION // 传递版本号
-    });
-  }
-});
 
 // ==================== 调试信息 ====================
 console.log(`[Service Worker ${APP_VERSION}] 已激活`);

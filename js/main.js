@@ -1,3 +1,25 @@
+// 页面加载时立即尝试获取版本
+function fetchVersion() {
+  if (navigator.serviceWorker?.controller) {
+    // 方式1：主动请求
+    navigator.serviceWorker.controller.postMessage({ type: 'GET_VERSION' });
+    
+    // 方式2：监听可能的主动推送（双保险）
+    navigator.serviceWorker.addEventListener('message', (event) => {
+      if (event.data.type === 'VERSION_INFO') {
+        const cleanVersion = event.data.version.replace(/[^\d.]/g, ''); // 移除所有非数字和点的字符
+        $('span.img-github span').text(cleanVersion);
+      }
+    });
+  } else {
+    // 延迟重试
+    setTimeout(fetchVersion, 300);
+  }
+}
+
+// 页面加载后立即执行
+document.addEventListener('DOMContentLoaded', fetchVersion);
+
 //弹窗样式
 iziToast.settings({
     timeout: 10000,
@@ -60,15 +82,6 @@ window.addEventListener('load', function () {
         navigator.serviceWorker.controller.postMessage({
             type: 'GET_VERSION'
         });
-    });
-    
-    // 监听回复
-    navigator.serviceWorker.addEventListener('message', (event) => {
-        if (event.data.type === 'VERSION_INFO') {
-            // 更新页面上的元素
-            const cleanVersion = event.data.version.replace(/[^\d.]/g, ''); // 移除所有非数字和点的字符
-            $('span.img-github span').text(cleanVersion);
-        }
     });
 
     //延迟加载音乐播放器
