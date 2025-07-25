@@ -179,42 +179,89 @@ fetch('https://api.vvhan.com/api/weather')
         console.error('Error fetching weather:', error);
     });
 
-// 链接提示文字配置
-const linkHints = {
-    github: "去 Github 看看",
-    email: "来封 Email", 
-    telegram: "请打电报",
-    twitter: "你懂的 ~",
-    phone: "不一定在线哦"
+// 社交链接配置（集中管理所有链接属性）
+const socialLinks = {
+    github: {
+        hint: "去 Github 看看",
+        icon: "fa-brands fa-github",
+        url: "https://github.com/Waynenet",
+        target: "_blank",
+        marginLeft: "4px"
+    },
+    email: {
+        hint: "来封 Email",
+        icon: "fa-solid fa-envelope",
+        url: "mailto:waynewu@88.com"
+    },
+    telegram: {
+        hint: "请打电报",
+        icon: "fa-brands fa-telegram",
+        url: "https://t.me/Wayne3301",
+        target: "_blank"
+    },
+    twitter: {
+        hint: "你懂的 ~",
+        icon: "fa-brands fa-x-twitter",
+        url: "https://x.com/Wayne3301",
+        target: "_blank"
+    },
+    phone: {
+        hint: "不一定在线哦",
+        icon: "fa-solid fa-square-phone",
+        url: "tel:+19093450501"
+    }
 };
 
-// 社交区域悬停效果
-$elements.social.hover(
-    function() {
-        $(this).css({
-            background: "rgb(0 0 0 / 25%)",
-            borderRadius: "6px",
-            backdropFilter: "blur(5px)"
-        });
-        $elements.linkText.show();
-    },
-    function() {
-        $(this).css({
-            background: "none",
-            borderRadius: "6px", 
-            backdropFilter: "none"
-        });
-        $elements.linkText.hide();
-    }
-);
-
-// 单个链接提示效果
-Object.entries(linkHints).forEach(([id, hint]) => {
-    $(`#${id}`).hover(
-        () => $elements.linkText.text(hint),
-        () => $elements.linkText.text("通过这里联系我")
+// 初始化社交链接
+function initSocialLinks() {
+    // 使用已定义的全局$elements中的变量
+    const { social, linkText } = $elements;
+    
+    // 清空现有链接（保留提示文本）
+    social.children(".link").remove();
+    
+    // 创建每个社交链接
+    Object.entries(socialLinks).forEach(([id, config]) => {
+        const $link = $(`
+            <a href="${config.url}" 
+               class="link" 
+               id="${id}"
+               ${config.target ? `target="${config.target}" rel="noopener noreferrer"` : ''}>
+                <i class="${config.icon}"></i>
+            </a>
+        `);
+        
+        // 添加左边距（如果有配置）
+        if (config.marginLeft) {
+            $link.css("margin-left", config.marginLeft);
+        }
+        
+        social.prepend($link); // 添加到提示文本前面
+    });
+    
+    // 社交区域整体悬停效果
+    social.hover(
+        () => {
+            social.addClass("social-hover");
+            linkText.show();
+        },
+        () => {
+            social.removeClass("social-hover");
+            linkText.hide();
+        }
     );
-});
+    
+    // 单个链接提示效果（使用事件委托提高性能）
+    social.on("mouseenter", ".link", function() {
+        const id = $(this).attr("id");
+        linkText.text(socialLinks[id].hint).show();
+    }).on("mouseleave", ".link", function() {
+        linkText.text("通过这里联系我");
+    });
+}
+
+// 文档加载完成后初始化
+$(document).ready(initSocialLinks);
 
 // 更多页面切换
 $('#switchmore').on('click', function() {
