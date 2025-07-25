@@ -179,64 +179,67 @@ fetch('https://api.vvhan.com/api/weather')
         console.error('Error fetching weather:', error);
     });
 
-// 社交链接配置（集中管理所有链接属性）
-const socialLinks = {
-    github: {
+// 社交链接配置
+const socialLinks = [
+    {
+        id: "github",
         hint: "去 Github 看看",
         icon: "fa-brands fa-github",
         url: "https://github.com/Waynenet",
         target: "_blank",
         marginLeft: "4px"
     },
-    email: {
+    {
+        id: "email",
         hint: "来封 Email",
         icon: "fa-solid fa-envelope",
         url: "mailto:waynewu@88.com"
     },
-    telegram: {
+    {
+        id: "telegram",
         hint: "请打电报",
         icon: "fa-brands fa-telegram",
         url: "https://t.me/Wayne3301",
         target: "_blank"
     },
-    twitter: {
+    {
+        id: "twitter",
         hint: "你懂的 ~",
         icon: "fa-brands fa-x-twitter",
         url: "https://x.com/Wayne3301",
         target: "_blank"
     },
-    phone: {
+    {
+        id: "phone",
         hint: "不一定在线哦",
         icon: "fa-solid fa-square-phone",
         url: "tel:+19093450501"
     }
-};
+];
 
 // 初始化社交链接
 function initSocialLinks() {
-    // 使用已定义的全局$elements中的变量
     const { social, linkText } = $elements;
     
     // 清空现有链接（保留提示文本）
     social.children(".link").remove();
     
-    // 创建每个社交链接
-    Object.entries(socialLinks).forEach(([id, config]) => {
+    // 按顺序创建社交链接（从后往前添加，确保GitHub在最前面）
+    socialLinks.slice().reverse().forEach(config => {
         const $link = $(`
             <a href="${config.url}" 
                class="link" 
-               id="${id}"
+               id="${config.id}"
                ${config.target ? `target="${config.target}" rel="noopener noreferrer"` : ''}>
                 <i class="${config.icon}"></i>
             </a>
         `);
         
-        // 添加左边距（如果有配置）
         if (config.marginLeft) {
             $link.css("margin-left", config.marginLeft);
         }
         
-        social.prepend($link); // 添加到提示文本前面
+        social.prepend($link);
     });
     
     // 社交区域整体悬停效果
@@ -251,10 +254,15 @@ function initSocialLinks() {
         }
     );
     
-    // 单个链接提示效果（使用事件委托提高性能）
+    // 单个链接提示效果
+    const linkMap = {};
+    socialLinks.forEach(link => {
+        linkMap[link.id] = link.hint;
+    });
+    
     social.on("mouseenter", ".link", function() {
         const id = $(this).attr("id");
-        linkText.text(socialLinks[id].hint).show();
+        linkText.text(linkMap[id]).show();
     }).on("mouseleave", ".link", function() {
         linkText.text("通过这里联系我");
     });
