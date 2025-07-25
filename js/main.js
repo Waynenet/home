@@ -77,9 +77,12 @@ window.addEventListener('load', function () {
     }, 800);
 
     //延迟加载音乐播放器
-    let element = document.createElement("script");
-    element.src = "./js/music.js";
-    document.body.appendChild(element);
+    setTimeout(() => {
+        const script = document.createElement("script");
+        script.src = "./js/music.js";
+        script.defer = true; // 延迟到 DOM 解析完成后执行（按顺序）
+        document.body.appendChild(script);
+    }, 3000);
 
 }, false)
 
