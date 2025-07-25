@@ -2,7 +2,7 @@
 importScripts('https://gcore.jsdelivr.net/npm/workbox-sw@latest/build/workbox-sw.js');
 
 // ==================== 版本控制配置 ====================
-const APP_VERSION = 'v2.0.1';
+const APP_VERSION = 'v2.1.0';
 const CACHE_PREFIX = 'Wayne';
 
 // 设置缓存命名规则
@@ -154,7 +154,7 @@ let title2 = `
 `
 let content = `
 版 本 号: ${APP_VERSION}
-更新日期: 2025-07-22
+更新日期: 2025-07-25
 
 主页:  https://home.3301.qzz.io
 Github:  https://github.com/Waynenet/home
