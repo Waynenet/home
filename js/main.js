@@ -171,30 +171,18 @@ $("#social").mouseover(function () {
     });
 });
 
-$("#github").mouseover(function () {
-    $("#link-text").html("去 Github 看看");
-}).mouseout(function () {
-    $("#link-text").html("通过这里联系我");
-});
-$("#email").mouseover(function () {
-    $("#link-text").html("来封 Email");
-}).mouseout(function () {
-    $("#link-text").html("通过这里联系我");
-});
-$("#telegram").mouseover(function () {
-    $("#link-text").html("请打电报");
-}).mouseout(function () {
-    $("#link-text").html("通过这里联系我");
-});
-$("#twitter").mouseover(function () {
-    $("#link-text").html("你懂的 ~");
-}).mouseout(function () {
-    $("#link-text").html("通过这里联系我");
-});
-$("#phone").mouseover(function () {
-    $("#link-text").html("不一定在线哦");
-}).mouseout(function () {
-    $("#link-text").html("通过这里联系我");
+const linkHints = {
+    github: "去 Github 看看",
+    email: "来封 Email",
+    telegram: "请打电报",
+    twitter: "你懂的 ~",
+    phone: "不一定在线哦",
+};
+
+Object.entries(linkHints).forEach(([id, hint]) => {
+    $(`#${id}`)
+        .on("mouseover", () => $("#link-text").text(hint))
+        .on("mouseout", () => $("#link-text").text("通过这里联系我"));
 });
 
 //更多页面切换
