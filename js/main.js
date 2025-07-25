@@ -1,26 +1,64 @@
-// 页面加载时立即尝试获取版本
-function fetchVersion() {
-  if (navigator.serviceWorker?.controller) {
-    // 方式1：主动请求
-    navigator.serviceWorker.controller.postMessage({ type: 'GET_VERSION' });
-    
-    // 方式2：监听可能的主动推送（双保险）
-    navigator.serviceWorker.addEventListener('message', (event) => {
-      if (event.data.type === 'VERSION_INFO') {
-        const cleanVersion = event.data.version.replace(/[^\d.]/g, ''); // 移除所有非数字和点的字符
-        $('span.img-github span').text(cleanVersion);
-      }
-    });
-  } else {
-    // 延迟重试
-    setTimeout(fetchVersion, 300);
-  }
+// 使用状态对象管理全局变量
+const state = {
+    times: 0,
+    shoemore: false,
+    switchmenu: false,
+    changemore: false
+};
+
+// 缓存DOM元素
+const $elements = {
+    linkText: $("#link-text"),
+    container: $("#container"),
+    loadingBox: $("#loading-box"),
+    hitokotoText: $("#hitokoto_text"),
+    fromText: $("#from_text"),
+    social: $("#social"),
+    pointer: $("#pointer"),
+    bg: $("#bg"),
+    cover: $(".cover"),
+    section: $("#section"),
+    row: $("#row"),
+    menu: $("#menu"),
+    box: $("#box"),
+    more: $("#more"),
+    rightone: $("#rightone"),
+    change: $("#change"),
+    change1: $("#change1"),
+    close: $("#close"),
+    openmore: $("#openmore"),
+    closemore: $("#closemore")
+};
+
+// 防抖函数
+function debounce(fn, delay) {
+    let timer;
+    return function() {
+        clearTimeout(timer);
+        timer = setTimeout(() => fn.apply(this, arguments), delay);
+    };
 }
 
-// 页面加载后立即执行
-document.addEventListener('DOMContentLoaded', fetchVersion);
+// 版本获取
+function fetchVersion() {
+    if (!navigator.serviceWorker?.controller) {
+        setTimeout(fetchVersion, 300);
+        return;
+    }
 
-//弹窗样式
+    const handleMessage = (event) => {
+        if (event.data.type === "VERSION_INFO") {
+            const cleanVersion = event.data.version.replace(/[^\d.]/g, "");
+            $('span.img-github span').text(cleanVersion);
+            navigator.serviceWorker.removeEventListener("message", handleMessage);
+        }
+    };
+
+    navigator.serviceWorker.addEventListener("message", handleMessage);
+    navigator.serviceWorker.controller.postMessage({ type: "GET_VERSION" });
+}
+
+// 弹窗样式配置
 iziToast.settings({
     timeout: 10000,
     progressBar: false,
@@ -38,36 +76,41 @@ iziToast.settings({
     iconColor: '#efefef',
 });
 
-//鼠标样式
-const body = document.querySelector("body");
-const element = document.getElementById("pointer");
-const halfElementWidth = element.offsetWidth / 2;
+// 鼠标样式
+if (!/Mobi|Tablet|iPad|iPhone|Android/i.test(navigator.userAgent)) {
+    const halfElementWidth = $elements.pointer[0].offsetWidth / 2;
+    
+    function setPosition(x, y) {
+        $elements.pointer.css({
+            transform: `translate(${x - halfElementWidth + 19}px, ${y - halfElementWidth + 19}px)`
+        });
+    }
 
-function setPosition(x, y) {
-    element.style.transform = `translate(${x - halfElementWidth + 19}px, ${y - halfElementWidth + 19}px)`;
+    $(document).on("mousemove", (e) => {
+        window.requestAnimationFrame(() => setPosition(e.clientX, e.clientY));
+    });
+} else {
+    $elements.pointer.hide();
 }
 
-// 监听鼠标移动，更新指针位置
-body.addEventListener("mousemove", (e) => {
-    window.requestAnimationFrame(() => setPosition(e.clientX, e.clientY));
-});
+// 加载完成后执行
+$(window).on('load', function() {
+    // 载入动画
+    $elements.loadingBox.addClass('loaded');
+    $elements.bg.css({
+        transform: "scale(1)",
+        filter: "blur(0px)",
+        transition: "ease 1.5s"
+    });
+    $elements.cover.css("opacity", 1);
+    $elements.section.css({
+        transform: "scale(1)",
+        opacity: 1,
+        filter: "blur(0px)"
+    });
 
-//非桌面端去除鼠标样式
-if (/Mobi|Tablet|iPad|iPhone|Android/i.test(navigator.userAgent)) {
-    $('#pointer').css("display", "none");
-}
-
-//加载完成后执行
-window.addEventListener('load', function () {
-
-    //载入动画
-    $('#loading-box').attr('class', 'loaded');
-    $('#bg').css("cssText", "transform: scale(1);filter: blur(0px);transition: ease 1.5s;");
-    $('.cover').css("cssText", "opacity: 1;transition: ease 1.5s;");
-    $('#section').css("cssText", "transform: scale(1) !important;opacity: 1 !important;filter: blur(0px) !important");
-
-    //用户欢迎
-    setTimeout(function () {
+    // 用户欢迎
+    setTimeout(() => {
         iziToast.show({
             timeout: 2500,
             icon: false,
@@ -76,60 +119,41 @@ window.addEventListener('load', function () {
         });
     }, 800);
 
-    //延迟加载音乐播放器
-    setTimeout(() => {
-        const script = document.createElement("script");
-        script.src = "./js/music.js";
-        script.defer = true; // 延迟到 DOM 解析完成后执行（按顺序）
-        document.body.appendChild(script);
-    }, 3000);
+    // 延迟加载音乐播放器
+    if (document.readyState === "complete") {
+        loadMusicPlayer();
+    } else {
+        window.addEventListener("load", loadMusicPlayer);
+    }
+});
 
-}, false)
+// 加载音乐播放器
+function loadMusicPlayer() {
+    const script = document.createElement("script");
+    script.src = "./js/music.js";
+    script.async = true;
+    document.body.appendChild(script);
+}
 
-setTimeout(function () {
-    $('#loading-text').html("字体及文件加载可能需要一定时间")
-}, 3000);
+// 一言功能
+const fetchHitokoto = debounce(async function() {
+    try {
+        const response = await fetch('https://v1.hitokoto.cn?max_length=24');
+        if (!response.ok) throw new Error('Network response was not ok');
+        const data = await response.json();
+        $elements.hitokotoText.text(data.hitokoto);
+        $elements.fromText.text(data.from);
+    } catch (error) {
+        console.error('Error fetching hitokoto:', error);
+        $elements.hitokotoText.text('获取一言失败');
+    }
+}, 1000);
 
-//新春灯笼 （ 需要时取消注释 ）
-
-//new_element=document.createElement("link");
-//new_element.setAttribute("rel","stylesheet");
-//new_element.setAttribute("type","text/css");
-//new_element.setAttribute("href","./css/lantern.css");
-//document.body.appendChild(new_element);
-//
-//new_element=document.createElement("script");
-//new_element.setAttribute("type","text/javascript");
-//new_element.setAttribute("src","./js/lantern.js");
-//document.body.appendChild(new_element);
-
-
-//获取一言
-fetch('https://v1.hitokoto.cn?max_length=24')
-    .then(response => response.json())
-    .then(data => {
-        $('#hitokoto_text').html(data.hitokoto)
-        $('#from_text').html(data.from)
-    })
-    .catch(console.error)
-
-let times = 0;
-$('#hitokoto').click(function () {
-    if (times == 0) {
-        times = 1;
-        let index = setInterval(function () {
-            times--;
-            if (times == 0) {
-                clearInterval(index);
-            }
-        }, 1000);
-        fetch('https://v1.hitokoto.cn?max_length=24')
-            .then(response => response.json())
-            .then(data => {
-                $('#hitokoto_text').html(data.hitokoto)
-                $('#from_text').html(data.from)
-            })
-            .catch(console.error)
+$('#hitokoto').on('click', function() {
+    if (state.times === 0) {
+        state.times = 1;
+        setTimeout(() => { state.times = 0; }, 1000);
+        fetchHitokoto();
     } else {
         iziToast.show({
             timeout: 2000,
@@ -139,152 +163,158 @@ $('#hitokoto').click(function () {
     }
 });
 
-//获取天气
+// 天气功能
 fetch('https://api.vvhan.com/api/weather')
-    .then(response => response.json())
-    .then(data => {
-        $('#wea_text').html(data.data.type)
-        $('#city_text').html(data.city)
-        $('#tem_low').html(data.data.low)
-        $('#tem_high').html(data.data.high)
+    .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.json();
     })
-    .catch(console.error)
+    .then(data => {
+        $('#wea_text').text(data.data.type);
+        $('#city_text').text(data.city);
+        $('#tem_low').text(data.data.low);
+        $('#tem_high').text(data.data.high);
+    })
+    .catch(error => {
+        console.error('Error fetching weather:', error);
+    });
 
-//链接提示文字
-$("#social").mouseover(function () {
-    $("#social").css({
-        "background": "rgb(0 0 0 / 25%)",
-        'border-radius': '6px',
-        "backdrop-filter": "blur(5px)"
-    });
-    $("#link-text").css({
-        "display": "block",
-    });
-}).mouseout(function () {
-    $("#social").css({
-        "background": "none",
-        "border-radius": "6px",
-        "backdrop-filter": "none"
-    });
-    $("#link-text").css({
-        "display": "none"
-    });
-});
-
+// 链接提示文字配置
 const linkHints = {
     github: "去 Github 看看",
-    email: "来封 Email",
+    email: "来封 Email", 
     telegram: "请打电报",
     twitter: "你懂的 ~",
-    phone: "不一定在线哦",
+    phone: "不一定在线哦"
 };
 
+// 社交区域悬停效果
+$elements.social.hover(
+    function() {
+        $(this).css({
+            background: "rgb(0 0 0 / 25%)",
+            borderRadius: "6px",
+            backdropFilter: "blur(5px)"
+        });
+        $elements.linkText.show();
+    },
+    function() {
+        $(this).css({
+            background: "none",
+            borderRadius: "6px", 
+            backdropFilter: "none"
+        });
+        $elements.linkText.hide();
+    }
+);
+
+// 单个链接提示效果
 Object.entries(linkHints).forEach(([id, hint]) => {
-    $(`#${id}`)
-        .on("mouseover", () => $("#link-text").text(hint))
-        .on("mouseout", () => $("#link-text").text("通过这里联系我"));
+    $(`#${id}`).hover(
+        () => $elements.linkText.text(hint),
+        () => $elements.linkText.text("通过这里联系我")
+    );
 });
 
-//更多页面切换
-let shoemore = false;
-$('#switchmore').on('click', function () {
-    shoemore = !shoemore;
-    if (shoemore && $(document).width() >= 990) {
-        $('#container').attr('class', 'container mores');
-        $("#change").html("Oops&nbsp;!");
-        $("#change1").html("哎呀，这都被你发现了（ 再点击一次可关闭 ）");
+// 更多页面切换
+$('#switchmore').on('click', function() {
+    state.shoemore = !state.shoemore;
+    if (state.shoemore && $(document).width() >= 990) {
+        $elements.container.addClass('mores');
+        $elements.change.html("Oops&nbsp;!");
+        $elements.change1.html("哎呀，这都被你发现了（ 再点击一次可关闭 ）");
     } else {
-        $('#container').attr('class', 'container');
-        $("#change").html("Hello&nbsp;World&nbsp;!");
-        $("#change1").html("把空间让，敞开的窗。将时间藏，露天的黄。");
+        $elements.container.removeClass('mores');
+        $elements.change.html("Hello&nbsp;World&nbsp;!");
+        $elements.change1.html("把空间让，敞开的窗。将时间藏，露天的黄。");
     }
 });
 
-//更多页面关闭按钮
-$('#close').on('click', function () {
-    $('#switchmore').click();
+// 更多页面关闭按钮
+$elements.close.on('click', function() {
+    $('#switchmore').trigger('click');
 });
 
-//移动端菜单栏切换
-let switchmenu = false;
-$('#switchmenu').on('click', function () {
-    switchmenu = !switchmenu;
-    if (switchmenu) {
-        $('#row').attr('class', 'row menus');
-        $("#menu").html("<i class='fa-solid fa-xmark'></i>");
+// 移动端菜单栏切换
+$('#switchmenu').on('click', function() {
+    state.switchmenu = !state.switchmenu;
+    if (state.switchmenu) {
+        $elements.row.addClass('menus');
+        $elements.menu.html("<i class='fa-solid fa-xmark'></i>");
     } else {
-        $('#row').attr('class', 'row');
-        $("#menu").html("<i class='fa-solid fa-bars'></i>");
+        $elements.row.removeClass('menus');
+        $elements.menu.html("<i class='fa-solid fa-bars'></i>");
     }
 });
 
-//更多弹窗页面
-$('#openmore').on('click', function () {
-    $('#box').css("display", "block");
-    $('#row').css("display", "none");
-    $('#more').css("cssText", "display:none !important");
-});
-$('#closemore').on('click', function () {
-    $('#box').css("display", "none");
-    $('#row').css("display", "flex");
-    $('#more').css("display", "flex");
+// 更多弹窗页面
+$elements.openmore.on('click', function() {
+    $elements.box.show();
+    $elements.row.hide();
+    $elements.more.hide();
 });
 
-//监听网页宽度
-window.addEventListener('load', function () {
-    window.addEventListener('resize', function () {
-        //关闭移动端样式
-        if (window.innerWidth >= 600) {
-            $('#row').attr('class', 'row');
-            $("#menu").html("<i class='fa-solid fa-bars'></i>");
-            //移除移动端切换功能区
-            $('#rightone').attr('class', 'row rightone');
-        }
+$elements.closemore.on('click', function() {
+    $elements.box.hide();
+    $elements.row.show();
+    $elements.more.show();
+});
 
-        if (window.innerWidth <= 990) {
-            //移动端隐藏更多页面
-            $('#container').attr('class', 'container');
-            $("#change").html("Hello&nbsp;World&nbsp;!");
-            $("#change1").html("把空间让，敞开的窗。将时间藏，露天的黄。");
+// 移动端切换功能区
+$('#changemore').on('click', function() {
+    state.changemore = !state.changemore;
+    $elements.rightone.toggleClass('mobile', state.changemore);
+});
 
-            //移动端隐藏弹窗页面
-            $('#box').css("display", "none");
-            $('#row').css("display", "flex");
-            $('#more').css("display", "flex");
-        }
-    })
-})
+// 监听网页宽度
+const handleResize = debounce(function() {
+    if (window.innerWidth >= 600) {
+        $elements.row.removeClass('menus');
+        $elements.menu.html("<i class='fa-solid fa-bars'></i>");
+        $elements.rightone.removeClass('mobile');
+    }
 
-//移动端切换功能区
-let changemore = false;
-$('#changemore').on('click', function () {
-    changemore = !changemore;
-    if (changemore) {
-        $('#rightone').attr('class', 'row menus mobile');
-    } else {
-        $('#rightone').attr('class', 'row menus');
+    if (window.innerWidth <= 990) {
+        $elements.container.removeClass('mores');
+        $elements.change.html("Hello&nbsp;World&nbsp;!");
+        $elements.change1.html("把空间让，敞开的窗。将时间藏，露天的黄。");
+        $elements.box.hide();
+        $elements.row.show();
+        $elements.more.show();
+    }
+}, 200);
+
+window.addEventListener('resize', handleResize);
+
+// 更多页面显示关闭按钮
+$elements.more.on({
+    mouseenter: () => {
+        $elements.close.add($elements.openmore).addClass("show-buttons");
+    },
+    mouseleave: () => {
+        $elements.close.add($elements.openmore).removeClass("show-buttons");
     }
 });
 
-//更多页面显示关闭按钮
-$("#more").hover(function () {
-    $('#close, #openmore').addClass("show-buttons");
-}, function () {
-    $('#close, #openmore').removeClass("show-buttons");
+$(".box-wrapper").on({
+    mouseenter: () => {
+        $elements.closemore.addClass("show-buttons");
+    },
+    mouseleave: () => {
+        $elements.closemore.removeClass("show-buttons");
+    }
 });
 
-$(".box-wrapper").hover(function () {
-    $('#closemore').addClass("show-buttons");
-}, function () {
-    $('#closemore').removeClass("show-buttons");
-});
-
-//屏蔽右键
-document.oncontextmenu = function () {
+// 屏蔽右键
+document.oncontextmenu = function() {
     iziToast.show({
         timeout: 2000,
         icon: "fa-solid fa-circle-exclamation",
         message: '为了浏览体验，本站禁用右键'
     });
     return false;
-}
+};
+
+// 初始加载
+document.addEventListener('DOMContentLoaded', fetchVersion);
+setTimeout(() => $('#loading-text').html("字体及文件加载可能需要一定时间"), 3000);
