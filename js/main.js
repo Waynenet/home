@@ -76,14 +76,6 @@ window.addEventListener('load', function () {
         });
     }, 800);
 
-    // 确保 Service Worker 已就绪
-    navigator.serviceWorker.ready.then(() => {
-        // 发送请求
-        navigator.serviceWorker.controller.postMessage({
-            type: 'GET_VERSION'
-        });
-    });
-
     //延迟加载音乐播放器
     let element = document.createElement("script");
     element.src = "./js/music.js";
